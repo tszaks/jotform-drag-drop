@@ -7,25 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // Function to receive student names from URL parameters
   function getStudentNames() {
     const params = new URLSearchParams(window.location.search);
-    const students = params.get('students'); // Expecting a comma-separated list
-    return students ? students.split(',') : [];
+    const studentNames = [];
+    for (let i = 1; i <= 5; i++) { // Loop through studentinfo1 to studentinfo5
+      const student = params.get(`studentinfo${i}`);
+      if (student && student.trim() !== "") {
+        studentNames.push(student.trim());
+      }
+    }
+    return studentNames;
   }
 
   // Populate student names dynamically
   function populateStudents() {
     const studentNames = getStudentNames();
     studentNames.forEach(name => {
-      const trimmedName = name.trim();
-      if(trimmedName) { // Ensure no empty names
-        const studentDiv = document.createElement('div');
-        studentDiv.classList.add('student');
-        studentDiv.setAttribute('data-student', trimmedName);
-        studentDiv.innerHTML = `
-          <strong>${trimmedName}</strong>
-          <div class="assigned-items" data-assigned="${trimmedName}"></div>
-        `;
-        studentsContainer.appendChild(studentDiv);
-      }
+      const studentDiv = document.createElement('div');
+      studentDiv.classList.add('student');
+      studentDiv.setAttribute('data-student', name);
+      studentDiv.innerHTML = `
+        <strong>${name}</strong>
+        <div class="assigned-items" data-assigned="${name}"></div>
+      `;
+      studentsContainer.appendChild(studentDiv);
     });
   }
 
@@ -54,23 +57,23 @@ document.addEventListener('DOMContentLoaded', () => {
   assignedAreas.forEach(area => {
     area.addEventListener('dragover', (e) => {
       e.preventDefault();
-      area.style.backgroundColor = '#e1f5fe';
+      area.style.backgroundColor = '#e1f5fe'; // Highlight drop zone
     });
 
     area.addEventListener('dragleave', () => {
-      area.style.backgroundColor = '#f9f9f9';
+      area.style.backgroundColor = '#f9f9f9'; // Remove highlight
     });
 
     area.addEventListener('drop', (e) => {
       e.preventDefault();
-      area.style.backgroundColor = '#f9f9f9';
+      area.style.backgroundColor = '#f9f9f9'; // Remove highlight
       if (draggedProduct) {
         // Move the dragged product to the assigned-items area
         area.appendChild(draggedProduct);
-        draggedProduct.setAttribute('draggable', 'false');
-        draggedProduct.style.cursor = 'default';
-        draggedProduct.classList.remove('product');
-        draggedProduct.classList.add('assigned-product');
+        draggedProduct.setAttribute('draggable', 'false'); // Disable further dragging
+        draggedProduct.style.cursor = 'default'; // Change cursor style
+        draggedProduct.classList.remove('product'); // Remove original class
+        draggedProduct.classList.add('assigned-product'); // Add new class for styling
 
         updateAssignments();
       }

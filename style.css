@@ -59,8 +59,8 @@ h3 {
 }
 
 .assigned-items .assigned-product {
-  background-color: #fff3cd;
-  border: 2px dashed #ffc107;
+  background-color: #d1e7dd; /* Light green background for assigned products */
+  border: 2px solid #0f5132; /* Dark green border */
   cursor: default;
   padding: 8px;
   margin: 5px 0;
@@ -71,13 +71,4 @@ h3 {
   .container {
     flex-direction: column;
   }
-}
-
-/* Add this section to your existing styles.css */
-
-/* Style for assigned products */
-.assigned-product {
-  background-color: #d1e7dd; /* Light green background */
-  border: 2px solid #0f5132; /* Dark green border */
-  cursor: default;
 }
