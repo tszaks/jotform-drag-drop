@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assign Items to Students</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h2>Assign Items to Students</h2>
+  <div class="container">
+    <div class="products">
+      <h3>Products in Cart</h3>
+      <div id="productList">
+        <div class="product" draggable="true" data-product="Product A">Product A</div>
+        <div class="product" draggable="true" data-product="Product B">Product B</div>
+        <div class="product" draggable="true" data-product="Product C">Product C</div>
+        <div class="product" draggable="true" data-product="Product D">Product D</div>
+        <!-- Add more products as needed -->
+      </div>
+    </div>
+    <div class="students">
+      <h3>Students</h3>
+      <div id="studentList">
+        <!-- Student names will be dynamically populated here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden input to store assignments -->
+  <input type="hidden" id="assignments" name="assignments" value="">
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+/* styles.css */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.products, .students {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 10px;
+  color: #007BFF;
+}
+
+.product, .student {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #e9f5ff;
+  border: 2px dashed #007BFF;
+  border-radius: 5px;
+  cursor: grab;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.product:hover, .student:hover {
+  background-color: #d0e7ff;
+  border-color: #0056b3;
+}
+
+.assigned-items {
+  margin-top: 10px;
+  min-height: 50px;
+  border-top: 2px dashed #ccc;
+  padding-top: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.assigned-items .assigned-product {
+  background-color: #fff3cd;
+  border: 2px dashed #ffc107;
+  cursor: default;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
