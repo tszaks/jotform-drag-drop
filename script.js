@@ -65,16 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       area.style.backgroundColor = '#f9f9f9';
       if (draggedProduct) {
-        // Clone the dragged product to assign it
-        const clonedProduct = draggedProduct.cloneNode(true);
-        clonedProduct.setAttribute('draggable', 'false');
-        clonedProduct.style.cursor = 'default';
-        clonedProduct.classList.remove('product');
-        clonedProduct.classList.add('assigned-product');
-        area.appendChild(clonedProduct);
-
-        // Optionally, remove the product from the cart
-        // draggedProduct.parentNode.removeChild(draggedProduct);
+        // Move the dragged product to the assigned-items area
+        area.appendChild(draggedProduct);
+        draggedProduct.setAttribute('draggable', 'false');
+        draggedProduct.style.cursor = 'default';
+        draggedProduct.classList.remove('product');
+        draggedProduct.classList.add('assigned-product');
 
         updateAssignments();
       }
@@ -98,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update the hidden input
     document.getElementById('assignments').value = JSON.stringify(assignments);
 
-    // Send assignments data to parent window
+    // Optionally, send assignments data to parent window
     window.parent.postMessage({ assignments: assignments }, '*');
   }
 

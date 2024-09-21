@@ -72,3 +72,12 @@ h3 {
     flex-direction: column;
   }
 }
+
+/* Add this section to your existing styles.css */
+
+/* Style for assigned products */
+.assigned-product {
+  background-color: #d1e7dd; /* Light green background */
+  border: 2px solid #0f5132; /* Dark green border */
+  cursor: default;
+}
